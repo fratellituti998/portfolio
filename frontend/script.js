@@ -165,7 +165,7 @@ const status = document.getElementById("form-status");
 
 // Run when form is submitted
 form.addEventListener("submit", function (e) {
-    e.preventDefault(); // stop page reload
+    
 
     // Show sending message
     status.textContent = "Sending...";
