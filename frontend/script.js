@@ -190,3 +190,8 @@ form.addEventListener("submit", function (e) {
         status.textContent = "Failed to send message ❌";
     });
 });
+
+menuToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+});
+
