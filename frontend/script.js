@@ -165,7 +165,8 @@ const status = document.getElementById("form-status");
 
 // Run when form is submitted
 form.addEventListener("submit", function (e) {
-    
+
+    e.preventDefault(); // 🔥 THIS WAS MISSING
 
     // Show sending message
     status.textContent = "Sending...";
@@ -179,19 +180,18 @@ form.addEventListener("submit", function (e) {
         body: formData
     })
     .then(() => {
-        // Success message
         status.textContent = "Message sent successfully ✅";
-
-        // Clear form
         form.reset();
     })
     .catch(() => {
-        // Error message
         status.textContent = "Failed to send message ❌";
     });
 });
 
+
+// =========================
+// MOBILE MENU FIX
+// =========================
 menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
 });
-
