@@ -158,41 +158,14 @@ window.addEventListener("scroll", () => {
 // CONTACT FORM HANDLER
 // =========================
 
-// Get form and status message
+// =========================
+// CONTACT FORM HANDLER (NETLIFY SAFE)
+// =========================
+
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 
-// Listen for form submit
-form.addEventListener("submit", async (e) => {
-
-    // Prevent page reload
-    e.preventDefault();
-
-    // Get input values
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    try {
-        // Send data to backend
-        const response = await fetch("http://localhost:3000/contact", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ name, email, message })
-        });
-
-        const data = await response.json();
-
-        // Show success message
-        if (data.success) {
-            status.textContent = "Message sent successfully ✅";
-            form.reset();
-        }
-
-    } catch (error) {
-        // Show error message
-        status.textContent = "Error sending message ❌";
-    }
+form.addEventListener("submit", function () {
+    // Show message while submitting
+    status.textContent = "Sending...";
 });
