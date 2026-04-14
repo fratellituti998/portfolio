@@ -159,25 +159,23 @@ window.addEventListener("scroll", () => {
 // CONTACT FORM (NETLIFY - NO RELOAD)
 // =========================
 
-// Select form and status message
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 
-// Run when form is submitted
 form.addEventListener("submit", function (e) {
 
-    e.preventDefault(); // 🔥 THIS WAS MISSING
+    e.preventDefault();
 
-    // Show sending message
     status.textContent = "Sending...";
 
-    // Collect form data
     const formData = new FormData(form);
 
-    // Send data to Netlify
     fetch("/", {
         method: "POST",
-        body: formData
+        headers: { 
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: new URLSearchParams(formData).toString()
     })
     .then(() => {
         status.textContent = "Message sent successfully ✅";
@@ -186,12 +184,5 @@ form.addEventListener("submit", function (e) {
     .catch(() => {
         status.textContent = "Failed to send message ❌";
     });
-});
 
-
-// =========================
-// MOBILE MENU FIX
-// =========================
-menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
 });
