@@ -1,0 +1,564 @@
+/* =========================
+   GLOBAL STYLES
+   ========================= */
+body {
+    background-color: bisque; /* main page background */
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================
+   HEADER / HERO SECTION
+   ========================= */
+header {
+    background-color: #2563eb; /* blue header */
+    color: white;
+    text-align: center;
+    padding: 40px 40px;
+}
+
+/* Profile image (circular) */
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    margin-top: -10px;
+    border: 2px solid white;
+    display: block;
+    margin: 70px auto;
+}
+
+/* Main heading */
+header h1 {
+    margin-bottom: 5px;
+    margin-top: 0px;
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin: 0;
+    transition: color 0.3s ease; /* hover effect */
+}
+
+/* Hover color change */
+header h1:hover {
+    color: #c8e910;
+}
+
+/* Subtitle text */
+header p {
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
+main {
+    max-width: 800px; /* controls content width */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Section titles */
+section h2 {
+    margin-bottom: 10px;
+    color: #2563eb;
+}
+
+
+/* =========================
+   LIST STYLING
+   ========================= */
+ul {
+    list-style-type: square;
+}
+
+li {
+    margin-bottom: 5px;
+    transition: transform 0.2s ease;
+}
+
+/* Hover effect on list items */
+li:hover {
+    transform: translate(5px);
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+    text-align: center;
+}
+
+
+/* =========================
+   PROJECT (OLD STYLE)
+   ========================= */
+.project {
+    padding: 15px;
+    border-left: 4px solid #2563eb;
+    margin-bottom: 15px;
+    background-color: #ecbd65;
+    border-radius: 6px;
+}
+
+.project h3 {
+    margin-bottom: 5px;
+}
+
+.project p {
+    font-size: 0.95rem;
+}
+
+/* Smooth transitions */
+a,
+button,
+.project {
+    transition: all 0.8s ease;
+}
+
+/* Hover effect */
+.project:hover {
+    transform: translate(-9px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   RESPONSIVE (SMALL SCREENS)
+   ========================= */
+@media (max-width:600px){
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .profile-img {
+        width:100px;
+        height:100px;
+    }
+
+    main {
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
+
+
+/* =========================
+   SMOOTH SCROLL
+   ========================= */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================
+   LINKS
+   ========================= */
+a {
+    color:#2563eb;
+    text-decoration:none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   DARK MODE (SYSTEM BASED)
+   ========================= */
+@media (prefers-color-scheme: dark) {
+
+    body {
+      background-color: #0f172a;
+      color: #e5e7eb;
+    }
+
+    header {
+      background-color: #020617;
+    }
+
+    section {
+      background-color: #020617;
+    }
+
+    footer {
+      background-color: #020617;
+      color: #9ca3af;
+    }
+
+    a {
+      color: #93c5fd;
+    }
+
+    .project {
+      background-color: #020617;
+      border-left-color: #93c5fd;
+    }
+}
+
+
+/* =========================
+   ACTIVE PROJECT STATE
+   ========================= */
+.project.active {
+    border-left-color:#16a34a;
+    background-color: #bbf7d0;
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   SKILLS SECTION
+   ========================= */
+.skill {
+    margin-bottom: 15px;
+}
+
+/* Progress bar background */
+.bar {
+    width:100%;
+    background: #ddd;
+    height: 8px;
+    border-radius: 5px;
+}
+
+/* Progress fill */
+.progress {
+    height:8px;
+    border-radius:5px;
+}
+
+/* Individual skill levels */
+.html {
+    width:90%;
+    background:#e34c26;
+}
+
+.css {
+    width:80%;
+    background:#264de4;
+}
+
+.js {
+    width:65%;
+    background:#f0db4f;
+}
+
+
+/* =========================
+   PROJECT GRID (MODERN)
+   ========================= */
+.projects-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+/* Project cards */
+.project-card {
+    background: rgb(51, 91, 223);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px rgba(0, 0, 0, 0.1);
+    transition:0.3s;
+}
+
+/* Hover effect */
+.project-card:hover {
+    transform:translate(-8px);
+}
+
+
+/* =========================
+   MANUAL DARK MODE (TOGGLE)
+   ========================= */
+body.dark {
+    background:#0f172a;
+    color:white;
+}
+
+body.dark header {
+    background: #1e293b;
+}
+
+
+/* =========================
+   THEME TOGGLE BUTTON
+   ========================= */
+/* Move dark mode button BELOW navbar */
+#theme-toggle{
+    position: fixed;
+    top:70px;
+    right:20px;
+    padding:10px;
+    border:none;
+    border-radius: 50%;
+    cursor: pointer;
+    background:#1e293b;
+    color:white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index:1000;
+}
+
+
+/* =========================
+   SCROLL ANIMATION
+   ========================= */
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   NAVBAR TOGGLE (MOBILE)
+   ========================= */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    color: white;
+    cursor:pointer;
+}
+
+@media (max-width:768px){
+
+    .nav-links{
+        position: fixed;      /* 🔥 change from absolute → fixed */
+        top: 70px;            /* push below navbar */
+        right: 10px;
+        background: #0a192f;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 2000;        /* 🔥 higher than navbar */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+}
+/* =========================
+
+   NAVBAR STYLING (TOP BAR)
+   ========================= */
+
+.navbar{
+    position: fixed;           /* Keeps navbar fixed at top when scrolling */
+    top: 0;                    /* Stick to very top of the page */
+    left: 0;                   /* Align to left edge */
+    width: 100%;               /* Full width across screen */
+
+    background: #0a192f;       /* Dark blue background */
+    
+    display: flex;             /* Use flexbox for layout */
+    justify-content: space-between; /* Space between logo and links */
+    align-items: center;       /* Vertically center items */
+
+    padding: 15px 30px;        /* Space inside navbar */
+    
+    z-index: 1000;             /* Ensures navbar stays above everything */
+}
+/* Add spacing so content doesn't hide under navbar */
+main{
+    margin-top:80px;
+}
+
+/* Fix nav links overflow */
+.nav-links{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Prevent overflow */
+.nav-links li a{
+    white-space: nowrap;
+}
+
+/* Logo name */
+.logo{
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Navigation links container */
+.nav-links{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+/* Links */
+.nav-links li a{
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Hover effect */
+.nav-links li a:hover{
+    color: #93c5fd;
+}
+
+/* =========================
+   ACTIVE NAV LINK STYLE
+   ========================= */
+
+.nav-links a.active{
+    color: #38bdf8;      /* Highlight color (light blue) */
+    font-weight: bold;   /* Make it stand out */
+}
+
+/* =========================
+   SCROLL ANIMATION (HIDDEN STATE)
+   ========================= */
+
+.hidden{
+    opacity: 0;                    /* Invisible at first */
+    transform: translateY(40px);   /* Move down slightly */
+    transition: all 0.8s ease;     /* Smooth animation */
+}
+
+/* =========================
+   WHEN ELEMENT BECOMES VISIBLE
+   ========================= */
+
+.show{
+    opacity: 1;                    /* Fade in */
+    transform: translateY(0);      /* Move to normal position */
+}
+
+/* =========================
+   PROJECT CARDS (BOX STYLE)
+   ========================= */
+
+.project-card{
+    background: rgb(51, 91, 223);  /* Blue card background */
+    padding: 20px;                 /* Inner spacing */
+    border-radius: 10px;           /* Rounded corners */
+
+    transition: all 0.3s ease;     /* Smooth hover animation */
+}
+
+/* =========================
+   WHEN USER HOVERS ON CARD
+   ========================= */
+
+.project-card:hover{
+    transform: translateY(-10px) scale(1.02); /* Lift + slightly enlarge */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);  /* Add shadow for depth */
+}
+
+/* =========================
+   CONTACT FORM STYLING
+   ========================= */
+
+#contact-form{
+    display: flex;              /* Stack inputs vertically */
+    flex-direction: column;
+    gap: 15px;                 /* Space between inputs */
+    margin-top: 20px;
+}
+
+/* Style inputs and textarea */
+#contact-form input,
+#contact-form textarea{
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Textarea size */
+#contact-form textarea{
+    min-height: 120px;
+    resize: none; /* Prevent resizing */
+}
+
+/* Submit button */
+#contact-form button{
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Button hover effect */
+#contact-form button:hover{
+    background: #1d4ed8;
+}
+
+/* =========================
+   CONTACT FORM STYLING
+========================= */
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+#contact-form button {
+    padding: 10px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#contact-form button:hover {
+    background: #1d4ed8;
+}
+
+#form-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
