@@ -155,17 +155,38 @@ window.addEventListener("scroll", () => {
 
 // =========================
 
-// CONTACT FORM HANDLER
+// =========================
+// CONTACT FORM (NETLIFY - NO RELOAD)
 // =========================
 
-// =========================
-// CONTACT FORM HANDLER (NETLIFY SAFE)
-// =========================
-
+// Select form and status message
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 
-form.addEventListener("submit", function () {
-    // Show message while submitting
+// Run when form is submitted
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // stop page reload
+
+    // Show sending message
     status.textContent = "Sending...";
+
+    // Collect form data
+    const formData = new FormData(form);
+
+    // Send data to Netlify
+    fetch("/", {
+        method: "POST",
+        body: formData
+    })
+    .then(() => {
+        // Success message
+        status.textContent = "Message sent successfully ✅";
+
+        // Clear form
+        form.reset();
+    })
+    .catch(() => {
+        // Error message
+        status.textContent = "Failed to send message ❌";
+    });
 });
