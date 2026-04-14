@@ -1,0 +1,12 @@
+# Ignore node modules (VERY IMPORTANT)
+node_modules/
+
+# Ignore environment variables (emails, passwords, API keys)
+.env
+
+# Ignore logs
+npm-debug.log*
+
+# Ignore system files
+.DS_Store
+Thumbs.db
