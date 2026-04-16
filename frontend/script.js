@@ -11,7 +11,6 @@ const year = new Date().getFullYear();
 // Insert year into footer
 footer.textContent = `© ${year} Fratellituti`;
 
-
 // =========================
 // PROJECT CLICK EFFECTS
 // =========================
@@ -20,20 +19,15 @@ footer.textContent = `© ${year} Fratellituti`;
 const projects = document.querySelectorAll(".project");
 
 // Add click event to each project
-projects.forEach(project => {
-
+projects.forEach((project) => {
   project.addEventListener("click", () => {
-
     // Show alert message
     alert("This project is coming soon 🚀");
 
     // Toggle active class (for styling/animation)
     project.classList.toggle("active");
-
   });
-
 });
-
 
 // =========================
 // TYPING EFFECT (HERO TEXT)
@@ -62,7 +56,6 @@ function type() {
 // Start typing effect
 type();
 
-
 // =========================
 // THEME TOGGLE (DARK MODE)
 // =========================
@@ -74,7 +67,6 @@ const themeToggle = document.getElementById("theme-toggle");
 themeToggle.onclick = () => {
   document.body.classList.toggle("dark");
 };
-
 
 // =========================
 // MOBILE NAVBAR TOGGLE
@@ -89,7 +81,6 @@ menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
 });
 
-
 // =========================
 // SCROLL ANIMATION (FADE IN)
 // =========================
@@ -99,18 +90,16 @@ const hiddenElements = document.querySelectorAll(".hidden");
 
 // Create observer
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-
+  entries.forEach((entry) => {
     // When element enters screen
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
     }
-
   });
 });
 
 // Apply observer to each hidden element
-hiddenElements.forEach(el => observer.observe(el));
+hiddenElements.forEach((el) => observer.observe(el));
 
 // =========================
 // SELECT ALL SECTIONS
@@ -120,17 +109,14 @@ const sections = document.querySelectorAll("section");
 // Select all navbar links
 const navLinks = document.querySelectorAll(".nav-links a");
 
-
 // =========================
 // RUN CODE WHEN USER SCROLLS
 // =========================
 window.addEventListener("scroll", () => {
-
   let current = ""; // Will store current section ID
 
   // Loop through each section
-  sections.forEach(section => {
-
+  sections.forEach((section) => {
     // Get distance from top of page
     const sectionTop = section.offsetTop - 100;
 
@@ -141,8 +127,7 @@ window.addEventListener("scroll", () => {
   });
 
   // Loop through nav links
-  navLinks.forEach(link => {
-
+  navLinks.forEach((link) => {
     link.classList.remove("active"); // Remove active class first
 
     // If link matches current section
@@ -150,39 +135,66 @@ window.addEventListener("scroll", () => {
       link.classList.add("active"); // Highlight it
     }
   });
-
 });
 
 // =========================
 
 // =========================
-// CONTACT FORM (NETLIFY - NO RELOAD)
+// NAVBAR SCROLL EFFECT
 // =========================
+
+window.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+
+  if (window.scrollY > 50) {
+    navbar.style.background = "#020617";
+    navbar.style.boxShadow = "0 5px 20px rgba(0,0,0,0.3)";
+  } else {
+    navbar.style.background = "#0a192f";
+    navbar.style.boxShadow = "none";
+  }
+});
 
 const form = document.getElementById("contact-form");
 const status = document.getElementById("form-status");
 
 form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    e.preventDefault();
+  // Reset classes
+  status.className = "form-status";
 
-    status.textContent = "Sending...";
+  // Show sending message
+  status.textContent = "Sending...";
+  status.classList.add("show");
 
-    const formData = new FormData(form);
+  const formData = new FormData(form);
 
-    fetch("/", {
-        method: "POST",
-        headers: { 
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: new URLSearchParams(formData).toString()
-    })
+  fetch("/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams(formData).toString(),
+  })
     .then(() => {
-        status.textContent = "Message sent successfully ✅";
-        form.reset();
+      status.textContent = "Message sent successfully ✅";
+      status.classList.add("success");
+
+      form.reset();
     })
     .catch(() => {
-        status.textContent = "Failed to send message ❌";
+      status.textContent = "Failed to send message ❌";
+      status.classList.add("error");
     });
+});
 
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+
+document.querySelectorAll(".project-card").forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("active");
+  });
 });
